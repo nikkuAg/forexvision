@@ -1,3 +1,18 @@
 from django.db import models
+from forex_backend.constants import CURRENCIES_QUOTE
 
-# Create your models here.
+
+class ExchangeRate(models.Model):
+    date = models.DateField()
+    quote = models.CharField(choices=CURRENCIES_QUOTE, max_length=10)
+    open = models.FloatField()
+    high = models.FloatField()
+    low = models.FloatField()
+    close = models.FloatField()
+
+    class Meta:
+        ordering = ["-date"]
+        unique_together = ("date", "quote")
+
+    def __str__(self):
+        return f"{self.date} - {self.quote} - {self.close}"
