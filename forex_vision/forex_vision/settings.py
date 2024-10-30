@@ -107,3 +107,11 @@ STATIC_URL = "static/"
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CRONJOBS = [
+    ("0 0 * * 0", "forex_backend.crontab.sync_exchange_rate_weekly"),
+    ("0 0 1 * *", "forex_backend.crontab.sync_exchange_rate_monthly"),
+    ("0 0 1 1,4,7,10 *", "forex_backend.crontab.sync_exchange_rate_quarterly"),
+    ("0 0 1 1,7 *", "forex_backend.crontab.sync_exchange_rate_half_yearly"),
+    ("0 0 1 1 *", "forex_backend.crontab.sync_exchange_rate_yearly"),
+]

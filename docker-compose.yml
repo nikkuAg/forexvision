@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  backend:
+    build: ./forex_vision
+    container_name: forex_vision_backend
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
