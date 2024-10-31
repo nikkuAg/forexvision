@@ -13,19 +13,23 @@ import {
 	Container,
 	Divider,
 	FormControl,
+	FormControlLabel,
 	InputLabel,
 	MenuItem,
 	Select,
 	Stack,
+	Switch,
 	Typography,
 } from "@mui/material"
 import axios from "axios"
 import { FOREX_DATA_API } from "@/constants/apis"
 import { Chart } from "./chart"
 import { Toast } from "./snackbar"
+import { CandleChart } from "./candleChart"
 
 export default function Home() {
 	const [exchangeData, setExchangeData] = useState([])
+	const [showLineChart, setShowLineChart] = useState(true)
 	const [quote, setQuote] = useState(Object.keys(CURRENCIES_QUOTE)[0])
 	const [period, setPeriod] = useState(Object.keys(PERIOD)[0])
 	const [date, setDate] = useState({
@@ -115,7 +119,7 @@ export default function Home() {
 									</Select>
 								</FormControl>
 								<Stack direction={"row"} spacing={2} alignItems={"center"}>
-									<FormControl sx={{ width: "30%" }}>
+									<FormControl sx={{ width: "10%" }}>
 										<InputLabel id='quote-label'>Period</InputLabel>
 										<Select
 											labelId='quote-label'
@@ -133,7 +137,7 @@ export default function Home() {
 									</FormControl>
 									<Divider>OR</Divider>
 									<LocalizationProvider dateAdapter={AdapterDayjs}>
-										<FormControl fullWidth>
+										<FormControl>
 											<Stack direction={"row"} spacing={2}>
 												<DatePicker
 													value={date.startDate}
@@ -152,12 +156,25 @@ export default function Home() {
 											</Stack>
 										</FormControl>
 									</LocalizationProvider>
+									<FormControl>
+										<FormControlLabel
+											control={<Switch defaultChecked />}
+											onChange={() => setShowLineChart(!showLineChart)}
+											label='Line Chart'
+										/>
+									</FormControl>
 								</Stack>
 							</Stack>
 						</FormControl>
 						<Box>
 							{exchangeData && exchangeData.length > 0 && (
-								<Chart data={exchangeData} />
+								<>
+									{showLineChart ? (
+										<Chart data={exchangeData} />
+									) : (
+										<CandleChart data={exchangeData} />
+									)}
+								</>
 							)}
 						</Box>
 					</Stack>
