@@ -1,5 +1,4 @@
 "use client"
-
 import { CURRENCIES_QUOTE, PERIOD } from "@/constants/constants"
 import { ThemeProvider } from "@emotion/react"
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers"
@@ -10,7 +9,6 @@ import { theme } from "./theme"
 import {
 	AppBar,
 	Box,
-	Container,
 	Divider,
 	FormControl,
 	FormControlLabel,
@@ -81,6 +79,11 @@ export default function Home() {
 				.post(FOREX_DATA_API, data)
 				.then((response) => {
 					setExchangeData(response.data)
+					if (response.data.length == 0) {
+						setMessage("No data found for the given period")
+						setOpenToast(true)
+						setSeverity("info")
+					}
 				})
 				.catch((error) => {
 					setMessage(error.response.data.message)

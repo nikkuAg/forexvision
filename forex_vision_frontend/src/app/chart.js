@@ -1,4 +1,3 @@
-"use client"
 import { Line } from "react-chartjs-2"
 import {
 	Chart as ChartJS,
@@ -9,7 +8,6 @@ import {
 	Legend,
 	Tooltip,
 } from "chart.js"
-import { Box } from "@mui/material"
 
 ChartJS.register(
 	LineElement,
