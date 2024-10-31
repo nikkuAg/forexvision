@@ -10,3 +10,12 @@ services:
       - .env
     ports:
       - "8000:8000"
+  frontend:
+    build: ./forex_vision_frontend
+    container_name: forex_vision_frontend
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"

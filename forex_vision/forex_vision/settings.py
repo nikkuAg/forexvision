@@ -33,9 +33,11 @@ INSTALLED_APPS = [
     "forex_backend",
     "rest_framework",
     "django_crontab",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -115,3 +117,9 @@ CRONJOBS = [
     ("0 0 1 1,7 *", "forex_backend.crontab.sync_exchange_rate_half_yearly"),
     ("0 0 1 1 *", "forex_backend.crontab.sync_exchange_rate_yearly"),
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+
+CORS_ALLOW_CREDENTIALS = True

@@ -11,7 +11,7 @@ class ExchangeRate(models.Model):
     close = models.FloatField()
 
     class Meta:
-        ordering = ["quote", "-date"]
+        ordering = ["quote", "date"]
         unique_together = ("date", "quote")
 
     def __str__(self):
