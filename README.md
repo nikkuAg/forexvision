@@ -40,8 +40,10 @@ To set up the project, follow these steps:
 
 1. Navigate to the frontend directory: `cd forex_vision_frontend`
 2. Install the required packages: `npm install` or `npm install --force`
-3. Build the frontend: `npm run build`
-4. Start the frontend server: `npm run start`
+3. Set up the environment variables manually by creating a .env file with the required variables.
+   1. NEXT_PUBLIC_API_BASE_URL=YOUR_BACKEND_URL (eg: http://localhost:8000/)
+4. Build the frontend: `npm run build`
+5. Start the frontend server: `npm run start`
 
 ## Hosting
 
