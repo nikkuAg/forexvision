@@ -49,4 +49,4 @@ The project is hosted at [ForexVision](https://forexvision-frontend.onrender.com
 
 ## API Documentation
 
-The API documentation can be found at `http://localhost:8000/swagger` or [ForexVision Api Docs](https://forexvision-backend.onrender.com/swagger).
+The API documentation can be found at `http://localhost:8000/swagger`.
